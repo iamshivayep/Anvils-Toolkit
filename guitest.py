@@ -59,7 +59,8 @@ class MyWindow1(Gtk.Window):
 			frame1.add(grid1)
 	def on_button1_clicked(self, widget):
 			print("LOG [USER CHOSE UPDATE SYSTEM!]")
-			subprocess.run(["pkexec", "nala", "update", "&&", "nala", "upgrade"])
+			subprocess.run(["pkexec", "nala", "update"])
+			subprocess.run(["pkexec", "nala", "upgrade"])
 	def on_button2_clicked(self, widget):
 			print("LOG [USER CHOSE INSTALL GAMING UTILS! OPENING POPUP]")
 			win1.hide()
