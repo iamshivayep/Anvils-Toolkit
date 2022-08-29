@@ -112,7 +112,7 @@ class MyWindow2(Gtk.Window):
 	
 	def on_buttonsteam_clicked(self, widget):
 			print("LOG {User Chose To Install steam}")
-			subprocess.run(["xfce4-terminal", "-e", "sudo apt update && sudo apt install steam"])
+			subprocess.run(["pkexec", "sudo apt update && sudo apt install steam"])
 
 class MyWindow3(Gtk.Window):
 	def __init__(self):
@@ -157,11 +157,10 @@ class MyWindow3(Gtk.Window):
 	
 	def on_buttonop1_clicked(self, widget):
 			print("LOG [USER CHOSE KDENLIVE TO BE INSTALLED!]")
-			subprocess.run(["xfce4-terminal", "-e", "sudo apt update && sudo apt install kdenlive"])
-			
+			subprocess.run(["pkexec", "sudo apt update && sudo apt install kdenlive"])			
 	def on_buttonop2_clicked(self, widget):
 			print("LOG [USER CHOSE OBS-STUDIO TO BE INSTALLED!]")
-			subprocess.run(["xfce4-terminal", "-e", "sudo apt update && sudo apt install obs-studio"])
+			subprocess.run(["pkexec", "sudo apt update && sudo apt install obs-studio"])
 
 	def on_mainmenu_clicked(self, widget):
 		print("User wants to go back to the main win1")
