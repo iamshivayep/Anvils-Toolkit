@@ -38,6 +38,14 @@ class MyWindow1(Gtk.Window):
 			button5.set_hexpand(True)
 			button5.connect("clicked", self.on_button5_clicked)
 
+			button6 = Gtk.Button(label="Exit The Program :(")
+			button6.set_hexpand(True)
+			button6.connect("clicked", self.on_button6_clicked)
+
+			button7 = Gtk.Button(label="Add Flatpaks and Flathub repos")
+			button7.set_hexpand(True)
+			button7.connect("clicked", self.on_button7_clicked)
+
 			grid1 = Gtk.Grid(row_spacing    = 10,
 								column_spacing = 10,
 								column_homogeneous = True)
@@ -50,8 +58,8 @@ class MyWindow1(Gtk.Window):
 			grid1.attach(button3, 2, 7, 1, 1)
 			grid1.attach(button4, 0, 8, 1, 1)
 			grid1.attach(button5, 1, 8, 1, 1)
-				#grid1.attach(button6, 2, 8, 1, 1)
-				#grid1.attach(button7, 1, 9, 1, 1)
+			grid1.attach(button6, 2, 8, 1, 1)
+			grid1.attach(button7, 1, 9, 1, 1)
 				#grid1.attach(label4,  0, 10, 3, 1)
 			#grid1.attach(check,   2, 11, 1, 1)
 
@@ -76,6 +84,16 @@ class MyWindow1(Gtk.Window):
 	def on_button5_clicked(self, widget):
 			print("LOG [USER CHOSE TO OPEN ANVILS NEWS!]")
 			subprocess.run(["xdg-open", "https://iamshivayep.github.io/AnvilsProject/news"])
+	def on_button6_clicked(self, widget):
+			print("user exited:(")
+			Gtk.main_quit()
+	def on_button7_clicked(self, widget):
+			print("installing flatpak....")
+			subprocess.run(["pkexec", "nala", "install", "flatpak", "-y"])
+			print("installing flatpak software center....")
+			subprocess.run(["pkexec", "nala", "install", "gnome-software-plugin-flatpak", "-y"])
+			print("adding flathub repository...")
+			subprocess.run(["pkexec", "flatpak " "remote-add " "--if-not-exists " "flathub " "https://flathub.org/repo/flathub.flatpakrepo"])
 class MyWindow2(Gtk.Window):
 	def __init__(self):
 			super().__init__(title="Install Game Utilities")
@@ -87,6 +105,9 @@ class MyWindow2(Gtk.Window):
 			buttonsteam = Gtk.Button(label="Install Steam")
 			buttonsteam.set_hexpand(True)
 			buttonsteam.connect("clicked", self.on_buttonsteam_clicked)
+			buttonmain1 = Gtk.Button(label="Back To Main Menu <-")
+			buttonmain1.set_hexpand(True)
+			buttonmain1.connect("clicked", self.on_buttonmain1_clicked)
 			#button2 = Gtk.Button(label="Install Gaming Utils")
 			#button2.set_hexpand(True)
 			#button2.connect("clicked", self.on_button2_clicked)
@@ -99,7 +120,7 @@ class MyWindow2(Gtk.Window):
 				#grid1.attach(label2,  0, 4, 3, 2)
 				#grid1.attach(label3,  0, 6, 3, 1)
 			grid2.attach(buttonsteam, 0, 7, 1, 1)
-			#grid1.attach(button2, 1, 7, 1, 1)
+			grid2.attach(buttonmain1, 1, 7, 1, 1)
 				#grid1.attach(button3, 2, 7, 1, 1)
 				#grid1.attach(button4, 0, 8, 1, 1)
 				#grid1.attach(button5, 1, 8, 1, 1)
@@ -114,6 +135,10 @@ class MyWindow2(Gtk.Window):
 	def on_buttonsteam_clicked(self, widget):
 			print("LOG {User Chose To Install steam}")
 			subprocess.run(["pkexec", "nala", "install", "steam", "-y"])
+	def on_buttonmain1_clicked(self, widget):
+			print("user chose to exit to main menu........")
+			win2.hide()
+			win1.show_all()
 
 class MyWindow3(Gtk.Window):
 	def __init__(self):
@@ -132,6 +157,9 @@ class MyWindow3(Gtk.Window):
 			buttonop3 = Gtk.Button(label="Back to Main Menu")
 			buttonop3.set_hexpand(True)
 			buttonop3.connect("clicked", self.on_mainmenu_clicked)
+			buttonop4 = Gtk.Button(label="Install Audacious")
+			buttonop4.set_hexpand(True)
+			buttonop4.connect("clicked", self.on_buttonop4_clicked)
 			#button2 = Gtk.Button(label="Install Gaming Utils")
 			#button2.set_hexpand(True)
 			#button2.connect("clicked", self.on_button2_clicked)
@@ -167,6 +195,11 @@ class MyWindow3(Gtk.Window):
 		print("User wants to go back to the main win1")
 		win3.hide()
 		win1.show_all()
+	def on_buttonop4_clicked(self, widget):
+		print("user chose to install the audacious music player....")
+		subprocess.run(["pkexec", "nala", "install", "audacious", "-y"])
+		print("done!")
+
 
 win1 = MyWindow1()
 win2 = MyWindow2()
