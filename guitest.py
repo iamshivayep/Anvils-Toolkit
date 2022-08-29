@@ -59,7 +59,7 @@ class MyWindow1(Gtk.Window):
 			frame1.add(grid1)
 	def on_button1_clicked(self, widget):
 			print("LOG [USER CHOSE UPDATE SYSTEM!]")
-			subprocess.run(["xfce4-terminal", "-e", "sudo apt update && sudo apt upgrade"])
+			subprocess.run(["pkexec", "sudo apt update && sudo apt upgrade"])
 	def on_button2_clicked(self, widget):
 			print("LOG [USER CHOSE INSTALL GAMING UTILS! OPENING POPUP]")
 			win1.hide()
