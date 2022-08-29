@@ -59,7 +59,7 @@ class MyWindow1(Gtk.Window):
 			frame1.add(grid1)
 	def on_button1_clicked(self, widget):
 			print("LOG [USER CHOSE UPDATE SYSTEM!]")
-			subprocess.run(["pkexec", "apt upgrade"])
+			subprocess.run(["pkexec", "nala", "update", "&&", "nala", "upgrade"])
 	def on_button2_clicked(self, widget):
 			print("LOG [USER CHOSE INSTALL GAMING UTILS! OPENING POPUP]")
 			win1.hide()
@@ -112,7 +112,7 @@ class MyWindow2(Gtk.Window):
 	
 	def on_buttonsteam_clicked(self, widget):
 			print("LOG {User Chose To Install steam}")
-			subprocess.run(["pkexec", "apt install steam"])
+			subprocess.run(["pkexec", "nala", "install", "steam", "-y"])
 
 class MyWindow3(Gtk.Window):
 	def __init__(self):
@@ -157,10 +157,10 @@ class MyWindow3(Gtk.Window):
 	
 	def on_buttonop1_clicked(self, widget):
 			print("LOG [USER CHOSE KDENLIVE TO BE INSTALLED!]")
-			subprocess.run(["pkexec", "apt install kdenlive"])			
+			subprocess.run(["pkexec", "nala", "install", "kdenlive", "-y"])			
 	def on_buttonop2_clicked(self, widget):
 			print("LOG [USER CHOSE OBS-STUDIO TO BE INSTALLED!]")
-			subprocess.run(["pkexec", "apt install obs-studio"])
+			subprocess.run(["pkexec", "nala", "install", "obs-studio", "-y"])
 
 	def on_mainmenu_clicked(self, widget):
 		print("User wants to go back to the main win1")
