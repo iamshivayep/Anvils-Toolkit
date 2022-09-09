@@ -20,7 +20,9 @@ class MyWindow1(Gtk.Window):
 			button1 = Gtk.Button(label="Update System")
 			button1.set_hexpand(True)
 			button1.connect("clicked", self.on_button1_clicked)
-			frame1 = Gtk.Frame(label="Anvils")
+			frame1 = Gtk.Frame(label="Ver 2.0-3")
+
+
 			
 			button2 = Gtk.Button(label="Install Gaming Utils")
 			button2.set_hexpand(True)
@@ -38,7 +40,7 @@ class MyWindow1(Gtk.Window):
 			button5.set_hexpand(True)
 			button5.connect("clicked", self.on_button5_clicked)
 
-			button6 = Gtk.Button(label="Exit The Program :(")
+			button6 = Gtk.Button(label="Exit The Program")
 			button6.set_hexpand(True)
 			button6.connect("clicked", self.on_button6_clicked)
 
@@ -67,8 +69,8 @@ class MyWindow1(Gtk.Window):
 			frame1.add(grid1)
 	def on_button1_clicked(self, widget):
 			print("LOG [USER CHOSE UPDATE SYSTEM!]")
-			subprocess.run(["pkexec", "nala", "update"])
-			subprocess.run(["pkexec", "nala", "upgrade", "-y"])
+			subprocess.run(["pkexec", "apt", "update"])
+			subprocess.run(["pkexec", "apt", "upgrade", "-y"])
 	def on_button2_clicked(self, widget):
 			print("LOG [USER CHOSE INSTALL GAMING UTILS! OPENING POPUP]")
 			win1.hide()
@@ -89,9 +91,9 @@ class MyWindow1(Gtk.Window):
 			Gtk.main_quit()
 	def on_button7_clicked(self, widget):
 			print("installing flatpak....")
-			subprocess.run(["pkexec", "nala", "install", "flatpak", "-y"])
+			subprocess.run(["pkexec", "apt", "install", "flatpak", "-y"])
 			print("installing flatpak software center....")
-			subprocess.run(["pkexec", "nala", "install", "gnome-software-plugin-flatpak", "-y"])
+			subprocess.run(["pkexec", "apt", "install", "gnome-software-plugin-flatpak", "-y"])
 			print("adding flathub repository...")
 			subprocess.run(["pkexec", "flatpak " "remote-add " "--if-not-exists " "flathub " "https://flathub.org/repo/flathub.flatpakrepo"])
 class MyWindow2(Gtk.Window):
@@ -134,7 +136,7 @@ class MyWindow2(Gtk.Window):
 	
 	def on_buttonsteam_clicked(self, widget):
 			print("LOG {User Chose To Install steam}")
-			subprocess.run(["pkexec", "nala", "install", "steam", "-y"])
+			subprocess.run(["pkexec", "apt", "install", "steam", "-y"])
 	def on_buttonmain1_clicked(self, widget):
 			print("user chose to exit to main menu........")
 			win2.hide()
@@ -186,10 +188,10 @@ class MyWindow3(Gtk.Window):
 	
 	def on_buttonop1_clicked(self, widget):
 			print("LOG [USER CHOSE KDENLIVE TO BE INSTALLED!]")
-			subprocess.run(["pkexec", "nala", "install", "kdenlive", "-y"])			
+			subprocess.run(["pkexec", "apt", "install", "kdenlive", "-y"])			
 	def on_buttonop2_clicked(self, widget):
 			print("LOG [USER CHOSE OBS-STUDIO TO BE INSTALLED!]")
-			subprocess.run(["pkexec", "nala", "install", "obs-studio", "-y"])
+			subprocess.run(["pkexec", "apt", "install", "obs-studio", "-y"])
 
 	def on_mainmenu_clicked(self, widget):
 		print("User wants to go back to the main win1")
@@ -197,7 +199,7 @@ class MyWindow3(Gtk.Window):
 		win1.show_all()
 	def on_buttonop4_clicked(self, widget):
 		print("user chose to install the audacious music player....")
-		subprocess.run(["pkexec", "nala", "install", "audacious", "-y"])
+		subprocess.run(["pkexec", "apt", "install", "audacious", "-y"])
 		print("done!")
 
 
